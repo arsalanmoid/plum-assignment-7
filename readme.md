@@ -37,7 +37,7 @@ ai-med-report-simplifier/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/ai-med-report-simplifier.git
+git clone https://github.com/arsalanmoid/plum-assignment-7.git
 cd ai-med-report-simplifier
 ```
 
@@ -86,21 +86,77 @@ Content-Type: application/json
 
 ```json
 {
-  "status": "ok",
-  "tests": [
-    { "name": "Hemoglobin", "value": 10.2, "unit": "g/dL", "status": "low" },
-    { "name": "WBC", "value": 11200, "unit": "/uL", "status": "high" },
-    { "name": "Sodium", "value": 135, "unit": "mmol/L", "status": "normal" },
-    { "name": "Magnesium", "value": 1.8, "unit": "mg/dL", "status": "low" }
-  ],
-  "summary": "Your results indicate that Hemoglobin is a bit low, while WBC is slightly high. Sodium is normal, but Magnesium is slightly low.",
-  "explanations": [
-    "Hemoglobin is responsible for carrying oxygen — a low level may cause fatigue.",
-    "WBCs help fight infection — a high count might indicate your body is fighting an infection.",
-    "Sodium is within normal range — good hydration maintained.",
-    "Magnesium supports muscle and nerve function — a slight decrease could be due to diet or hydration.",
-    "This report is for educational purposes only. Please consult your doctor for professional advice."
-  ]
+    "tests": [
+        {
+            "name": "Hemoglobin",
+            "value": 10.2,
+            "unit": "g/dL",
+            "status": "low",
+            "ref_range": {
+                "low": 12,
+                "high": 15
+            },
+            "normalization_confidence": 0.9
+        },
+        {
+            "name": "WBC",
+            "value": 11200,
+            "unit": "/uL",
+            "status": "high",
+            "ref_range": {
+                "low": 4000,
+                "high": 11000
+            },
+            "normalization_confidence": 0.9
+        },
+        {
+            "name": "Sodium",
+            "value": 133,
+            "unit": "mmol/L",
+            "status": "low",
+            "ref_range": {
+                "low": 135,
+                "high": 145
+            },
+            "normalization_confidence": 0.9
+        },
+        {
+            "name": "Magnesium, Serum",
+            "value": 2.5,
+            "unit": "mg/dL",
+            "status": "high",
+            "ref_range": {
+                "low": 1.7,
+                "high": 2.2
+            },
+            "normalization_confidence": 0.9
+        },
+        {
+            "name": "Creatinine",
+            "value": 1.1,
+            "unit": "mg/dL",
+            "status": "normal",
+            "ref_range": {
+                "low": 0.6,
+                "high": 1.2
+            },
+            "normalization_confidence": 0.9
+        }
+    ],
+    "summary": "Your recent lab results indicate a few values outside the typical range, specifically your hemoglobin, white blood cell count (WBC), sodium, and magnesium levels.",
+    "explanations": [
+        "Here's a closer look at what each result means:",
+        "1.Hemoglobin (10.2 - LOW): Hemoglobin is a protein in your red blood cells that carries oxygen throughout your body. A low level can sometimes indicate anemia, which might make you feel tired or weak.",
+        "2.WBC (11200 - HIGH): White blood cells (WBCs) are part of your immune system, helping your body fight infections. A high count can sometimes mean your body is fighting off an infection or inflammation.",
+        "3.Sodium (133 - LOW): Sodium is an important electrolyte that helps regulate fluid balance and nerve function. A low sodium level can be caused by various factors, including certain medications or medical conditions, and might sometimes lead to symptoms like nausea or fatigue.",
+        "4.Magnesium, Serum (2.5 - HIGH): Magnesium is another electrolyte vital for muscle and nerve function, blood sugar control, and blood pressure regulation. A slightly high level can sometimes be related to kidney function or certain medications, though it's less common to see symptoms unless it's very high.",
+        "3.This information is for educational purposes only and is not a medical diagnosis. Please consult your healthcare provider for personalized advice."
+    ],
+    "status": "ok",
+    "confidences": {
+        "ocr_confidence": 0.81,
+        "normalization_confidence": 0.99
+    }
 }
 ```
 
